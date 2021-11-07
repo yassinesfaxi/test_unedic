@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des étudiants{% endblock %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+
+{% endblock stylesheets %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title d-flex flex-row justify-content-between align-items-center">
+                        <h3 class="card-label">
+                            Student list
+                        </h3>
+                        <a href="{{ path('student_new_edit') }}" class="btn btn-info">Add student</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table text-center">
+                        <thead>
+                        <tr>
+                            <th scope="col">Numero</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for student in students %}
+                                <tr>
+                                    <td>{{ student.numEtud }}</td>
+                                    <td>{{ student.firstName }}</td>
+                                    <td>{{ student.lastName }}</td>
+                                    <td>
+                                        <a href="{{ path('student_new_edit', { id : student.id }) }}" class="btn btn-warning btn-sm"><i class="fa fa-pen"></i> Edit</a>
+                                        <a href="{{ path('student_delete', { id : student.id }) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+{% endblock %}

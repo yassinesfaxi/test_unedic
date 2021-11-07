@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des étudiants{% endblock %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+
+{% endblock stylesheets %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title d-flex flex-row justify-content-between align-items-center">
+                        <h3 class="card-label">
+                            Student list
+                        </h3>
+                        <button type="button" class="btn btn-info">Add student</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12"></div>
+                        <div class="col-12"></div>
+                        <div class="col-12"></div>
+                        <div class="col-12"></div>
+                    </div>
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+
+                    {{ form_end((form)) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+{% endblock %}

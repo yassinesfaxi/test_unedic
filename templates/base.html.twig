@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test Unedic</title>
+    <meta name="description" content="CATU relance fournisseurs"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('assets/css/fonts.css') }}"/>
+        <link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css"/>
+        <link href="{{ asset('assets/plugins/sweetAlert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css"/>
+    {% endblock %}
+
+</head>
+
+{% use "bootstrap_4_layout.html.twig" %}
+
+<body id="kt_body" class="subheader-enabled subheader-fixed page-loading">
+<div class="d-flex flex-column flex-root">
+    <div class="d-flex flex-row flex-column-fluid page">
+        <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper" style="padding-top: 50px;">
+            <div id="kt_header" class="header header-fixed">
+                <div class="container-fluid d-flex align-items-stretch justify-content-between">
+                    <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+                        <div id="kt_header_menu" class="header-menu header-menu-mobile header-menu-layout-default">
+                            <ul class="menu-nav">
+                                <li class="menu-item" aria-haspopup="true">
+                                    <h1 class="font-weight-boldest">Test Technique</h1>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+                <div class="d-flex flex-column-fluid">
+                    <div class="container">
+                        {% block body %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
+                <div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
+                    <div class="text-dark order-2 order-md-1">
+                        <span class="text-muted font-weight-bold mr-2">Developed by</span>
+                        <a href="https://www.linkedin.com/in/hadrich-mohamedamin/" target="_blank"
+                           class="text-dark-75 text-hover-primary">Yassine Sfaxi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block javascripts %}
+
+    <script src="{{ asset('assets/js/KTAppSettings.js') }}"></script>
+    <script src="{{ asset('assets/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('assets/js/scripts.bundle.js') }}"></script>
+
+    <script>
+        {% for message in app.flashes('error') %}
+        Swal.fire({
+            html: "{{ message | raw }}",
+            icon: 'error',
+        });
+        {% endfor %}
+        {% for message in app.flashes('success') %}
+        Swal.fire({
+            html: "{{ message | raw }}",
+            icon: 'success',
+        });
+        {% endfor %}
+    </script>
+
+{% endblock %}
+
+</body>
+</html>
